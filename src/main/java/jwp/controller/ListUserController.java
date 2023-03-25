@@ -15,6 +15,6 @@ public class ListUserController implements Controller {
             req.setAttribute("users", MemoryUserRepository.getInstance().findAll());
             return "/user/list.jsp";
         }
-        return "redirect:/user/login.jsp";
+        return "redirect:/user/loginForm";
     }
 }
