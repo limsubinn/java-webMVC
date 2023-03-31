@@ -81,7 +81,8 @@ INSERT INTO QUESTIONS (writer, title, contents, createdDate, countOfAnswer) VALU
      '오늘 그홉 ㄱㄱ?',
      '컴공 낭만 그홉 하실 분 구함 \n 맥주 먹으면서 백준 푸실 분 구함',
      CURRENT_TIMESTAMP(), 3);
-림
+
+INSERT INTO ANSWERS (writer, contents, createdDate, questionId) VALUES
     ('박장우',
      '이것이 회장인가...',
      CURRENT_TIMESTAMP(), 5);
