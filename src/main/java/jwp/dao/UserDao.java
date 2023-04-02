@@ -1,5 +1,6 @@
 package jwp.dao;
 
+import core.jdbc.JdbcTemplate;
 import jwp.model.User;
 
 import java.sql.SQLException;
