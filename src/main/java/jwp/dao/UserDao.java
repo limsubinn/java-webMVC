@@ -2,6 +2,7 @@ package jwp.dao;
 
 import jwp.model.User;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class UserDao {
@@ -18,7 +19,7 @@ public class UserDao {
     }
 
     public void update(User user) {
-        String sql = "update users set password=?, name=?, email=? where userId=?";
+        String sql = "UPDATE USERS set password=?, name=?, email=? WHERE userId=?";
         jdbcTemplate.update(sql, pstmt -> {
             pstmt.setString(1, user.getPassword());
             pstmt.setString(2, user.getName());
@@ -30,13 +31,13 @@ public class UserDao {
     public List<User> findAll() {
         String sql = "SELECT * FROM USERS";
 
-        return jdbcTemplate.query(sql,rs -> new User(rs.getString("userId"), rs.getString("password"), rs.getString("name"),
+        return jdbcTemplate.query(sql,
+                rs -> new User(rs.getString("userId"), rs.getString("password"), rs.getString("name"),
                 rs.getString("email")));
     }
 
-    public User findByUserId(String userId) {
-        String sql = "SELECT userId, password, name, email FROM USERS WHERE userid=?";
-
+    public User findByUserId(String userId) throws SQLException {
+        String sql = "SELECT userId, password, name, email FROM USERS WHERE userId=?";
         return jdbcTemplate.queryForObject(sql,
                 pstmt -> pstmt.setString(1, userId),
                 rs -> new User(rs.getString("userId"), rs.getString("password"), rs.getString("name"), rs.getString("email")));

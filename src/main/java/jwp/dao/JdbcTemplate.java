@@ -20,9 +20,11 @@ public class JdbcTemplate<T> {
         }
     }
 
-    public T queryForObject(String sql, PreparedStatementSetter pstmtSetter, RowMapper<T> rowMapper) {
-        try (Connection con = ConnectionManager.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql); ResultSet rs = pstmt.executeQuery()) {
+    public T queryForObject(String sql, PreparedStatementSetter pstmtSetter, RowMapper<T> rowMapper) throws SQLException {
+        ResultSet rs = null;
+        try (Connection con = ConnectionManager.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmtSetter.setValues(pstmt);
+            rs = pstmt.executeQuery();
             T object = null;
             if (rs.next()) {
                 object = rowMapper.mapRow(rs);
@@ -31,6 +33,10 @@ public class JdbcTemplate<T> {
             return object;
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
         }
     }
 
