@@ -5,7 +5,7 @@ import jwp.model.User;
 import java.util.List;
 
 public class UserDao {
-    JdbcTemplate jdbcTemplate = new JdbcTemplate();
+    JdbcTemplate<User> jdbcTemplate = new JdbcTemplate<>();
 
     public void insert(User user) {
         String sql = "INSERT INTO USERS VALUES (?, ?, ?, ?)";
