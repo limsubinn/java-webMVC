@@ -9,42 +9,35 @@
 
     <div class="container" id="main">
             <header class="qna-header">
-                <h2 class="qna-title">객체지향에서 가장 중요하다고 생각하는 것이 무엇인가요?</h2>
+                <h2 class="qna-title">${question.title}</h2>
             </header>
             <div class="content-main">
                 <article class="article">
                     <div class="article-header">
                         <div class="article-header-thumb">
-                            <img src="../img/picture.jpeg" class="article-author-thumb" alt="">
+                            <img src="/img/picture.jpeg" class="article-author-thumb" alt="">
                         </div>
                         <div class="article-header-text">
-                          <!-- 사용자 프로필 추가 할거면 span -> a 태그로 바꾸고 API 연결 -->
-                            <span class="article-author-name">김정우</span>
-                            <span class="article-header-time">
-                              2023-03-09 23:11
-                            </span>
+                            <a href="/users/92/kim" class="article-author-name">${question.writer}</a>
+                            <a href="/questions/413" class="article-header-time" title="퍼머링크">
+                                <fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${question.createdDate}" />
+                                <i class="icon-link"></i>
+                            </a>
                         </div>
                     </div>
                     <div class="article-doc">
-                        <p>객체지향의 특징 4가지</p>
-                        <p>추상화</p>
-                        <p>캡슐화</p>
-                        <p>상속</p>
-                        <p>다형성</p>
-                        <p> ??? </p>
+                        ${question.contents}
                     </div>
                     <div class="article-util">
                         <ul class="article-util-list">
+
+                            <c:if test="${not empty sessionScope.user}">
+                                <li>
+                                    <a class="link-modify-article" href="/qna/updateForm?questionId=${question.questionId}">수정</a>
+                                </li>
+                            </c:if>
                             <li>
-                              <!-- 수정, 삭제 API 연결 필요 -->
-                                <a class="link-modify-article" href="/questions/423/form">수정</a>
-                            </li>
-                            <li>
-                              <!-- 수정, 삭제 API 연결 필요 -->
-                                <form class="form-delete" action="/questions/423" method="POST">
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <button class="link-delete-article" type="submit">삭제</button>
-                                </form>
+                                <a class="link-modify-article" href="/qna/delete?questionId=${question.questionId}">삭제</a>
                             </li>
                             <li>
                                 <a class="link-modify-article" href="/">목록</a>
@@ -52,6 +45,7 @@
                         </ul>
                     </div>
                 </article>
+
   
                 <div class="qna-comment">
                     <div class="qna-comment-kuit">
@@ -76,7 +70,7 @@
                                     <ul class="article-util-list">
                                         <li>
                                           <!-- 수정, 삭제 API 연결 필요 -->
-                                            <a class="link-modify-article" href="/questions/1/answers/1/form">수정</a>
+                                            <a class="link-modify-article" href="/qna/1/answers/1/form">수정</a>
                                         </li>
                                         <li>
                                           <!-- 수정, 삭제 API 연결 필요 -->
