@@ -20,6 +20,7 @@ public class UpdateUserFormController extends HttpServlet {
         User user = MemoryUserRepository.getInstance().findUserById(userId);
 
         if (user != null) {
+
             request.setAttribute("user", user);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/user/updateForm.jsp");
             dispatcher.forward(request, response);

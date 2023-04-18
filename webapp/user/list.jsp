@@ -21,6 +21,7 @@
             </thead>
             <tbody>
             <%
+                User currentUser = (User) request.getAttribute("user");
                 Collection<User> users = (Collection<User>) request.getAttribute("users");
                 for (User user : users) {
             %>
@@ -31,7 +32,11 @@
                 </th>
                 <th class="col-md-3"><%= user.getEmail() %>
                 </th>
-                <th class="col-md-3"><a href="/user/updateForm?userId=<%= user.getUserId() %>" class="btn btn-success" role="button">수정</a></th>
+                <th class="col-md-3">
+                    <% if (currentUser.isSameUser(user)) { %>
+                    <a href="/user/updateForm?userId=<%= user.getUserId() %>" class="btn btn-success" role="button">수정</a>
+                    <% } %>
+                </th>
             </tr>
             <%
                 }
