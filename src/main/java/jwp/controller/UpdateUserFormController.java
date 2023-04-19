@@ -12,18 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/user/updateForm")
-public class UpdateUserFormController extends HttpServlet {
+public class UpdateUserFormController implements Controller {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
         String query = request.getQueryString();
         String userId = query.split("=")[1];
         User user = MemoryUserRepository.getInstance().findUserById(userId);
 
         if (user != null) {
-
             request.setAttribute("user", user);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/user/updateForm.jsp");
-            dispatcher.forward(request, response);
+            return "/user/updateForm.jsp";
         }
+
+        return "redirect:/";
     }
 }
