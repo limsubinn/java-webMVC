@@ -7,7 +7,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/user/update")
 public class UpdateUserController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {

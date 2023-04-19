@@ -18,10 +18,10 @@ public class ListUserController implements Controller {
             request.setAttribute("users", MemoryUserRepository.getInstance().findAll());
             request.setAttribute("user", user);
 
-            return "/user/list.jsp";
+            return "/user/userList";
         }
 
         // 로그인 되어 있지 않은 상태
-        return "redirect:/user/login";
+        return "redirect:/user/userLogin";
     }
 }

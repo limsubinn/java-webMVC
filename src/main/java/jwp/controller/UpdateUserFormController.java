@@ -21,7 +21,7 @@ public class UpdateUserFormController implements Controller {
 
         if (user != null) {
             request.setAttribute("user", user);
-            return "/user/updateForm.jsp";
+            return "/user/userUpdate";
         }
 
         return "redirect:/";

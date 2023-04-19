@@ -3,9 +3,15 @@ package jwp.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class HomeController implements Controller{
+public class ForwardController implements Controller{
+
+    private String url;
+
+    public ForwardController(String url) {
+        this.url = url;
+    }
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        return "/home.jsp";
+        return url;
     }
 }
