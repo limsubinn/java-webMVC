@@ -3,12 +3,10 @@ package jwp.controller;
 import core.db.MemoryUserRepository;
 import jwp.model.User;
 
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/user/login")
 public class LoginController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
@@ -19,7 +17,7 @@ public class LoginController implements Controller {
         User user = MemoryUserRepository.getInstance().findUserById(userId);
 
         // 로그인 성공
-        if (user.matchPassword(password)) {
+        if ((user != null) && user.matchPassword(password)) {
             session.setAttribute("user", user);
             return "redirect:/";
         }

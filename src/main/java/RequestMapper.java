@@ -23,6 +23,7 @@ public class RequestMapper {
         }
     } static {
         controllers.put("/", new ForwardController("/home.jsp"));
+        controllers.put("/user/form", new ForwardController("/user/form.jsp"));
         controllers.put("/user/userList", new ForwardController("/user/list.jsp"));
         controllers.put("/user/userLogin", new ForwardController("/user/login.jsp"));
         controllers.put("/user/loginFailed", new ForwardController("/user/loginFailed.jsp"));
@@ -33,10 +34,10 @@ public class RequestMapper {
         controllers.put("/user/logout", new LogoutController());
         controllers.put("/user/updateForm", new UpdateUserFormController());
         controllers.put("/user/signup", new CreateUserController());
-
     }
 
-    public void run() throws IOException {
-        controller.execute(request, response);
+    public String run() {
+        String url = controller.execute(request, response);
+        return url;
     }
 }
