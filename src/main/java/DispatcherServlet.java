@@ -8,10 +8,15 @@ import java.io.IOException;
 
 @WebServlet("/")
 public class DispatcherServlet extends HttpServlet {
+    private RequestMapper mapper;
+    @Override
+    public void init() {
+        mapper = new RequestMapper();
+    }
+
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        RequestMapper mapper = new RequestMapper(request, response);
-        String url = mapper.run();
+        String url = mapper.run(request, response);
 
         if (url.startsWith("redirect:")) {
             response.sendRedirect(url.split(":")[1]);
