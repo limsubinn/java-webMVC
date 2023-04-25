@@ -9,6 +9,7 @@ import java.io.IOException;
 @WebServlet("/")
 public class DispatcherServlet extends HttpServlet {
     private RequestMapper mapper;
+
     @Override
     public void init() {
         mapper = new RequestMapper();
