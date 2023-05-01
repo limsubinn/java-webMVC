@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!doctype html>
 <html lang="ko">
@@ -9,7 +10,7 @@
 
     <div class="container" id="main">
             <header class="qna-header">
-                <h2 class="qna-title">객체지향에서 가장 중요하다고 생각하는 것이 무엇인가요?</h2>
+                <h2 class="qna-title">${question.title}</h2>
             </header>
             <div class="content-main">
                 <article class="article">
@@ -19,19 +20,22 @@
                         </div>
                         <div class="article-header-text">
                           <!-- 사용자 프로필 추가 할거면 span -> a 태그로 바꾸고 API 연결 -->
-                            <span class="article-author-name">김정우</span>
+                            <span class="article-author-name"> ${question.writer} </span>
                             <span class="article-header-time">
-                              2023-03-09 23:11
+                              ${question.createdDate}
                             </span>
                         </div>
                     </div>
+                    <% pageContext.setAttribute("newLineChar", "\\n"); %>
                     <div class="article-doc">
-                        <p>객체지향의 특징 4가지</p>
-                        <p>추상화</p>
-                        <p>캡슐화</p>
-                        <p>상속</p>
-                        <p>다형성</p>
-                        <p> ??? </p>
+                        <c:set var="contents" value="${question.contents}" />
+                        ${fn:replace(contents, newLineChar, "<br/>")}
+<%--                        <p>객체지향의 특징 4가지</p>--%>
+<%--                        <p>추상화</p>--%>
+<%--                        <p>캡슐화</p>--%>
+<%--                        <p>상속</p>--%>
+<%--                        <p>다형성</p>--%>
+<%--                        <p> ??? </p>--%>
                     </div>
                     <div class="article-util">
                         <ul class="article-util-list">
@@ -55,7 +59,7 @@
   
                 <div class="qna-comment">
                     <div class="qna-comment-kuit">
-                        <p class="qna-comment-count"><strong>2</strong>개의 의견</p>
+                        <p class="qna-comment-count"><strong>${question.countOfAnswer}</strong>개의 의견</p>
                         <div>
                             <article class="article" id="answer-1405">
                                 <div class="article-header">

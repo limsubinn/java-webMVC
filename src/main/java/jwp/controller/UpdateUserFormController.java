@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 
 public class UpdateUserFormController implements Controller {
-
     UserDao userDao = new UserDao();
 
     @Override
