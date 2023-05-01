@@ -19,7 +19,7 @@
             </tr>
             </thead>
             <tbody>
-
+            <c:set var="currentUser" value="${sessionScope.user.userId}" />
             <c:forEach items="${users}" var="user">
             <tr>
                 <th class="col-md-3">${user.userId}
@@ -28,7 +28,11 @@
                 </th>
                 <th class="col-md-3">${user.email}
                 </th>
-                <th class="col-md-3"><a href="/user/updateForm?userId=${user.userId}" class="btn btn-success" role="button">수정</a></th>
+                <th class="col-md-3">
+                    <c:set var="eachUser" value="${user.userId}"/>
+                    <c:if test="${currentUser == eachUser}">
+                    <a href="/user/updateForm?userId=${currentUser}" class="btn btn-success" role="button">수정</a></th>
+                    </c:if>
             </tr>
             </c:forEach>
             </tbody>

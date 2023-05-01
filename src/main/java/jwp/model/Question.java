@@ -1,20 +1,40 @@
 package jwp.model;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.List;
+
 public class Question {
     private int questionId;
     private String writer;
     private String title;
     private String contents;
-    private String createdDate;
+    private Date createdDate;
     private int countOfAnswer;
 
-    public Question(int questionId, String writer, String title, String contents, String createdDate, int countOfAnswer) {
+    public Question(int questionId, String writer, String title, String contents, Date createdDate, int countOfAnswer) {
         this.questionId = questionId;
         this.writer = writer;
         this.title = title;
         this.contents = contents;
         this.createdDate = createdDate;
         this.countOfAnswer = countOfAnswer;
+    }
+
+    public Question(String writer, String title, String contents) {
+        this.questionId = 0;
+        this.writer = writer;
+        this.title = title;
+        this.contents = contents;
+        this.createdDate = Date.valueOf(LocalDate.now());
+        this.countOfAnswer = 0;
+    }
+
+    public Question(int questionId, String writer, String title, Date createdDate) {
+        this.questionId = questionId;
+        this.writer = writer;
+        this.title = title;
+        this.createdDate = createdDate;
     }
 
     public int getQuestionId() {
@@ -33,11 +53,23 @@ public class Question {
         return contents;
     }
 
-    public String getCreatedDate() {
+    public Date getCreatedDate() {
         return createdDate;
     }
 
     public int getCountOfAnswer() {
         return countOfAnswer;
+    }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "questionId=" + questionId +
+                ", writer='" + writer + '\'' +
+                ", title='" + title + '\'' +
+                ", contents='" + contents + '\'' +
+                ", createdDate='" + createdDate + '\'' +
+                ", countOfAnswer=" + countOfAnswer +
+                '}';
     }
 }
