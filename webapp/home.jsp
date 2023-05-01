@@ -10,44 +10,27 @@
         <h2>Q&A</h2>
         <div class="qna-list">
           <ul class="list">
+              <c:forEach items="${questions}" var="question">
               <li>
                   <div class="wrap">
                       <div class="main">
                           <strong class="subject">
-                              <a href="/qna/show"> 객체지향에서 가장 중요하다고 생각하는 것이 무엇인가요? </a>
+                              <a href="/qna/show"> ${question.title} </a>
                           </strong>
                           <div class="auth-info">
                               <i class="icon-add-comment"></i>
-                              <span class="time">2023-03-09 23:11</span>
-                              <span clas="author">김정우</span>
+                              <span class="time"> ${question.createdDate} </span>
+                              <span clas="author"> ${question.writer} </span>
                               <!-- <a href="./user/profile.jsp" class="author">김정우</a> -->
                           </div>
                           <div class="reply" title="댓글">
                               <i class="icon-reply"></i>
-                              <span class="point">12</span>
+                              <span class="point"> ${question.questionId} </span>
                           </div>
                       </div>
                   </div>
               </li>
-              <li>
-                  <div class="wrap">
-                      <div class="main">
-                          <strong class="subject">
-                              <a href="/qna/show"> 동아리에 시간 얼마나 투자할 수 있는지? </a>
-                          </strong>
-                          <div class="auth-info">
-                              <i class="icon-add-comment"></i>
-                              <span class="time">2023-03-10 23:55</span>
-                              <span class="author">민병욱</span>
-                              <!-- <a href="./user/profile.jsp" class="author">민병욱</a> -->
-                          </div>
-                          <div class="reply" title="댓글">
-                              <i class="icon-reply"></i>
-                              <span class="point">8</span>
-                          </div>
-                      </div>
-                  </div>
-              </li>
+              </c:forEach>
           </ul>
           <div class="row">
             <div class="col-md-5"></div>
