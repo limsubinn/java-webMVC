@@ -30,6 +30,12 @@ public class Question {
         this.countOfAnswer = 0;
     }
 
+    public Question(int questionId, String title, String contents) {
+        this.questionId = questionId;
+        this.title = title;
+        this.contents = contents;
+    }
+
     public Question(int questionId, String writer, String title, Date createdDate) {
         this.questionId = questionId;
         this.writer = writer;

@@ -29,19 +29,16 @@
                     <% pageContext.setAttribute("newLineChar", "\\n"); %>
                     <div class="article-doc">
                         <c:set var="contents" value="${question.contents}" />
-                        ${fn:replace(contents, newLineChar, "<br/>")}
-<%--                        <p>객체지향의 특징 4가지</p>--%>
-<%--                        <p>추상화</p>--%>
-<%--                        <p>캡슐화</p>--%>
-<%--                        <p>상속</p>--%>
-<%--                        <p>다형성</p>--%>
-<%--                        <p> ??? </p>--%>
+                        <p style="white-space: pre-line;"> ${fn:replace(contents, newLineChar, "<br/>")} </p>
                     </div>
                     <div class="article-util">
                         <ul class="article-util-list">
+                            <c:set var="writerId" value="${question.writer}" />
+                            <c:set var="currentId" value="${user.userId}" />
+                            <c:if test="${writerId == currentId}">
                             <li>
                               <!-- 수정, 삭제 API 연결 필요 -->
-                                <a class="link-modify-article" href="/questions/423/form">수정</a>
+                                <a class="link-modify-article" href="/questions/423/form?questionId=${question.questionId}">수정</a>
                             </li>
                             <li>
                               <!-- 수정, 삭제 API 연결 필요 -->
@@ -50,6 +47,7 @@
                                     <button class="link-delete-article" type="submit">삭제</button>
                                 </form>
                             </li>
+                            </c:if>
                             <li>
                                 <a class="link-modify-article" href="/">목록</a>
                             </li>

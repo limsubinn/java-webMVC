@@ -3,7 +3,6 @@ package jwp.dao;
 import core.jdbc.JdbcTemplate;
 import core.jdbc.KeyHolder;
 import jwp.model.Question;
-import jwp.model.User;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -25,6 +24,19 @@ public class QuestionDao {
                     pstmt.setDate(4, question.getCreatedDate());
                     pstmt.setInt(5, question.getCountOfAnswer());
                 }, keyHolder);
+
+        return findByQuestionId(keyHolder.getId());
+    }
+
+    public Question update(Question question) throws SQLException {
+        KeyHolder keyHolder = new KeyHolder();
+        String sql = "UPDATE QUESTIONS set title=?, contents=? WHERE questionId=?";
+
+        jdbcTemplate.update(sql, pstmt -> {
+            pstmt.setString(1, question.getTitle());
+            pstmt.setString(2, question.getContents());
+            pstmt.setInt(3, question.getQuestionId());
+        }, keyHolder);
 
         return findByQuestionId(keyHolder.getId());
     }
