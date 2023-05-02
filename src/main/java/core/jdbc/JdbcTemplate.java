@@ -65,4 +65,26 @@ public class JdbcTemplate<T> {
         return objects;
     }
 
+    public List<T> query(String sql, PreparedStatementSetter pstmtSetter, RowMapper<T> rowMapper) throws SQLException {
+        List<T> objects = new ArrayList<>();
+        ResultSet rs = null;
+
+        try (Connection con = ConnectionManager.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmtSetter.setValues(pstmt);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                T object = rowMapper.mapRow(rs);
+                objects.add(object);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+        }
+
+        return objects;
+    }
 }

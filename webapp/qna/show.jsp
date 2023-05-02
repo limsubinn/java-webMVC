@@ -59,20 +59,21 @@
                     <div class="qna-comment-kuit">
                         <p class="qna-comment-count"><strong>${question.countOfAnswer}</strong>개의 의견</p>
                         <div>
-                            <article class="article" id="answer-1405">
+                            <c:forEach items="${answers}" var="answer">
+                            <article class="article" id="${answer.answerId}">
                                 <div class="article-header">
                                     <div class="article-header-thumb">
                                         <img src="../img/picture.jpeg" class="article-author-thumb" alt="">
                                     </div>
                                     <div class="article-header-text">
-                                        <span class="article-author-name">정경은</span>
+                                        <span class="article-author-name">${answer.writer}</span>
                                         <span class="article-header-time">
-                                           2023-03-09 23:15
+                                           ${answer.createdDate}
                                         </span>
                                     </div>
                                 </div>
                                 <div class="article-doc comment-doc">
-                                    <p>.</p>
+                                    <p>${answer.contents}</p>
                                 </div>
                                 <div class="article-util">
                                     <ul class="article-util-list">
@@ -90,37 +91,38 @@
                                     </ul>
                                 </div>
                             </article>
-                            <article class="article" id="answer-1406">
-                                <div class="article-header">
-                                    <div class="article-header-thumb">
-                                        <img src="../img/picture.jpeg" class="article-author-thumb" alt="">
-                                    </div>
-                                    <div class="article-header-text">
-                                        <span class="article-author-name">정은아</span>
-                                        <span class="article-header-time">
-                                          2023-03-09 23:20
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="article-doc comment-doc">
-                                    <p>nuclear busy girl</p>
-                                </div>
-                                <div class="article-util">
-                                    <ul class="article-util-list">
-                                        <li>
-                                          <!-- 수정, 삭제 API 연결 필요 -->
-                                            <a class="link-modify-article" href="/questions/1/answers/2/form">수정</a>
-                                        </li>
-                                        <li>
-                                          <!-- 수정, 삭제 API 연결 필요 -->
-                                            <form class="form-delete" action="/questions/1/answers/2" method="POST">
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <button type="submit" class="delete-answer-button">삭제</button>
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </article>
+                            </c:forEach>
+<%--                            <article class="article" id="answer-1406">--%>
+<%--                                <div class="article-header">--%>
+<%--                                    <div class="article-header-thumb">--%>
+<%--                                        <img src="../img/picture.jpeg" class="article-author-thumb" alt="">--%>
+<%--                                    </div>--%>
+<%--                                    <div class="article-header-text">--%>
+<%--                                        <span class="article-author-name">정은아</span>--%>
+<%--                                        <span class="article-header-time">--%>
+<%--                                          2023-03-09 23:20--%>
+<%--                                        </span>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                                <div class="article-doc comment-doc">--%>
+<%--                                    <p>nuclear busy girl</p>--%>
+<%--                                </div>--%>
+<%--                                <div class="article-util">--%>
+<%--                                    <ul class="article-util-list">--%>
+<%--                                        <li>--%>
+<%--                                          <!-- 수정, 삭제 API 연결 필요 -->--%>
+<%--                                            <a class="link-modify-article" href="/questions/1/answers/2/form">수정</a>--%>
+<%--                                        </li>--%>
+<%--                                        <li>--%>
+<%--                                          <!-- 수정, 삭제 API 연결 필요 -->--%>
+<%--                                            <form class="form-delete" action="/questions/1/answers/2" method="POST">--%>
+<%--                                                <input type="hidden" name="_method" value="DELETE">--%>
+<%--                                                <button type="submit" class="delete-answer-button">삭제</button>--%>
+<%--                                            </form>--%>
+<%--                                        </li>--%>
+<%--                                    </ul>--%>
+<%--                                </div>--%>
+<%--                            </article>--%>
                             <form class="submit-write">
                                 <div class="form-group" style="padding:14px;">
                                     <textarea class="form-control" placeholder="Update your status"></textarea>
