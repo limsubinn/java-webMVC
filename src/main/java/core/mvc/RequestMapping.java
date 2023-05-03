@@ -29,10 +29,11 @@ public class RequestMapping {
         controllers.put("/user/update", new UpdateUserController());
 
         controllers.put("/qna/form", new FormController());
-        controllers.put("/qna/create", new CreateController());
+        controllers.put("/qna/create", new CreateQuestionController());
         controllers.put("/qna/show", new ShowController());
         controllers.put("/questions/423/form", new UpdateFormController());
         controllers.put("/qna/update", new UpdateController());
+        controllers.put("/api/qna/addAnswer", new CreateAnswerController());
     }
 
     public Controller getController(HttpServletRequest request) {

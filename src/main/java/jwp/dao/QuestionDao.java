@@ -41,6 +41,15 @@ public class QuestionDao {
         return findByQuestionId(keyHolder.getId());
     }
 
+    public void updateCountOfAnswer(Question question) throws SQLException {
+        String sql = "UPDATE QUESTIONS set countOfAnswer=? WHERE questionId=?";
+
+        jdbcTemplate.update(sql, pstmt -> {
+            pstmt.setInt(1, question.getCountOfAnswer());
+            pstmt.setInt(2, question.getQuestionId());
+        });
+    }
+
     public List<Question> findAll() {
         String sql = "SELECT questionId, writer, title, createdDate FROM QUESTIONS";
 

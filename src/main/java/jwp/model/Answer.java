@@ -18,6 +18,14 @@ public class Answer {
         this.questionId = questionId;
     }
 
+    public Answer(int questionId, String writer, String contents) {
+        this.answerId = 0;
+        this.writer = writer;
+        this.contents = contents;
+        this.createdDate = Date.valueOf(LocalDate.now());
+        this.questionId = questionId;
+    }
+
     public int getAnswerId() {
         return answerId;
     }
@@ -36,5 +44,16 @@ public class Answer {
 
     public int getQuestionId() {
         return questionId;
+    }
+
+    @Override
+    public String toString() {
+        return "Answer{" +
+                "answerId=" + answerId +
+                ", writer='" + writer + '\'' +
+                ", contents='" + contents + '\'' +
+                ", createdDate=" + createdDate +
+                ", questionId=" + questionId +
+                '}';
     }
 }

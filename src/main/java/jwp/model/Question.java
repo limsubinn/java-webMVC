@@ -66,6 +66,10 @@ public class Question {
         return countOfAnswer;
     }
 
+    public void increaseCountOfAnswer() {
+        countOfAnswer++;
+    }
+
     @Override
     public String toString() {
         return "Question{" +
