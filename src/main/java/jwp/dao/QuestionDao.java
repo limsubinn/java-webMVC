@@ -51,14 +51,15 @@ public class QuestionDao {
     }
 
     public List<Question> findAll() {
-        String sql = "SELECT questionId, writer, title, createdDate FROM QUESTIONS";
+        String sql = "SELECT questionId, writer, title, createdDate, countOfAnswer FROM QUESTIONS";
 
         return jdbcTemplate.query(sql,
                 rs -> new Question(
                         rs.getInt("questionId"),
                         rs.getString("writer"),
                         rs.getString("title"),
-                        rs.getDate("createdDate")
+                        rs.getDate("createdDate"),
+                        rs.getInt("countOfAnswer")
                 ));
     }
 

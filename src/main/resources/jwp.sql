@@ -57,13 +57,13 @@ INSERT INTO QUESTIONS (writer, title, contents, createdDate, countOfAnswer) VALU
     ('정경은',
      '같이 술 마실 분?',
      '제가 술을 참 좋아해요! \n 낯을 안가려서 어느 자리를 가도 mc 하는 편입니다 ^^ \n \n 저랑 술드실분?',
-     CURRENT_TIMESTAMP(), 0);
+     CURRENT_TIMESTAMP(), 3);
 
 INSERT INTO QUESTIONS (writer, title, contents, createdDate, countOfAnswer) VALUES
     ('김한주',
      '스프링 질문 받아요',
      '모르셨죠? \n 사실 제가 스프링 왕입니다^^ \n 언제든 질문주세요.',
-     CURRENT_TIMESTAMP(), 0);
+     CURRENT_TIMESTAMP(), 2);
 
 
 INSERT INTO ANSWERS (writer, contents, createdDate, questionId) VALUES
@@ -80,7 +80,7 @@ INSERT INTO QUESTIONS (writer, title, contents, createdDate, countOfAnswer) VALU
     ('황재상',
      '오늘 그홉 ㄱㄱ?',
      '컴공 낭만 그홉 하실 분 구함 \n 맥주 먹으면서 백준 푸실 분 구함',
-     CURRENT_TIMESTAMP(), 3);
+     CURRENT_TIMESTAMP(), 0);
 
 INSERT INTO ANSWERS (writer, contents, createdDate, questionId) VALUES
     ('박장우',

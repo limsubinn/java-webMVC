@@ -35,11 +35,12 @@ public class Question {
         this.contents = contents;
     }
 
-    public Question(int questionId, String writer, String title, Date createdDate) {
+    public Question(int questionId, String writer, String title, Date createdDate, int countOfAnswer) {
         this.questionId = questionId;
         this.writer = writer;
         this.title = title;
         this.createdDate = createdDate;
+        this.countOfAnswer = countOfAnswer;
     }
 
     public int getQuestionId() {
