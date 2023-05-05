@@ -33,9 +33,8 @@
                     </div>
                     <div class="article-util">
                         <ul class="article-util-list">
-                            <c:set var="writerId" value="${question.writer}" />
                             <c:set var="currentId" value="${user.userId}" />
-                            <c:if test="${writerId == currentId}">
+                            <c:if test="${question.isSameUser(currentId)}">
                             <li>
                               <!-- 수정, 삭제 API 연결 필요 -->
                                 <a class="link-modify-article" href="/questions/423/form?questionId=${question.questionId}">수정</a>

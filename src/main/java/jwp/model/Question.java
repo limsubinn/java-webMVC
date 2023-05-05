@@ -67,6 +67,10 @@ public class Question {
         return countOfAnswer;
     }
 
+    public boolean isSameUser(String userId) {
+        return userId.equals(this.writer);
+    }
+
     public void increaseCountOfAnswer() {
         countOfAnswer++;
     }
