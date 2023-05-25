@@ -1,5 +1,6 @@
 # java-webMVC
 
+
 4️⃣ [4주차 워크북 - 서블릿 JSP](https://fearless-texture-68a.notion.site/Server-4-JSP-3753d48315374949b056f0850f9702a7)
 - week4/step1
   - 서블릿 JSP 구현
@@ -8,7 +9,6 @@
     - 개인정보 수정
     - 로그인/로그아웃
     - 회원 목록 및 개인정보 수정 보안 강화
-
 - week4/step2
   - 서블릿 MVC 구현
 
@@ -21,7 +21,6 @@
     - create
     - show.jsp
     - update
-
 - week5/step2
   - 답변
     - read
